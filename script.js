@@ -1,32 +1,3 @@
-// functions with calc opreation
-function add(num1, num2) {
-
-    let res = num1 + num2;
-    return res
-
-}
-
-function subtract(num1, num2){
-
-    let res = num1 - num2;
-    return res
-
-}
-
-function multiply(num1, num2) {
-
-    let res = num1 * num2;
-    return res
-
-}
-
-function divide(num1, num2) {
-
-    let res = num1 / num2;
-    return res
-
-}
-
 //Variables to store the numbers and operator of the expression
 let num1;
 
@@ -93,6 +64,45 @@ function clear() {
     
 }
 
+let deleteBtn = document.querySelector('.deleteBtn')
+deleteBtn.addEventListener('click', deleteNum)
+
+function deleteNum() {
+
+    if (expressionIsSet == false) {
+
+        if (num1.length > 1) {
+
+            num1 = num1.slice(0, -1);
+
+        } else {
+
+            num1 = '';
+
+        }
+
+        console.log('num1: ', num1)
+        currentNum.textContent = num1;
+    } else if (expressionIsSet == true) {
+
+        if (num2.length > 1) {
+
+            num2 = num2.slice(0, -1);
+
+        } else {
+
+            num2 = '';
+
+        }
+
+        console.log('num2: ', num2)
+        currentNum.textContent = num2;
+
+    }  
+    
+
+}
+
 //Get the operator buttons from the DOM, and iterates through it adding event listener
 let operatorBtns = document.querySelectorAll('.operator');
 operatorBtns.forEach(opBtn => {
@@ -127,6 +137,8 @@ equalBtn.addEventListener('click', operate)
 //Function to execute the expression
 function operate() {
     
+    expressionIsSet = false;
+
     let res = 0;
 
     switch(operator) {
@@ -137,12 +149,12 @@ function operate() {
 
 
         case '-':
-        res = num1 - num2;
+        res = +num1 - +num2;
         break;
 
 
         case '×':
-        res = num1 * num2;
+        res = +num1 * +num2;
         break;
 
 
