@@ -24,8 +24,17 @@ let currentNum = document.querySelector('.currentNum');
 function setNumber(e) {
     
         let btnContent = Number(e.target.textContent);
+
+    if (operationToggle === true) {
+
+        currentNum.textContent = '';
+        currentNum.textContent += `${parseFloat(btnContent)}`
+        num2 = currentNum.textContent;
+
+        console.log('num2: ', num2);
+    }
     
-    if (!expressionIsSet) {
+    if (!expressionIsSet && operationToggle === false) {
         
         currentNum.textContent += `${parseFloat(btnContent)}`
         
@@ -117,8 +126,23 @@ let expressionDiv = document.querySelector('.expression');
 //Var the store a boolean verifying whether the expression is set or not
 let expressionIsSet = false;
 
+let operationToggle = false;
+
+let eTarget;
+
+
 //Function to set the operator and update the div txt content
-function setExpression (e) {
+function setExpression (e) {    
+
+    if (num2 !== '') {
+
+        operationToggle = true;
+        operator = e.target.textContent;
+        eTarget = e.target.textContent;
+        operate();
+        return 
+
+    }
 
     operator = e.target.textContent;
     expressionDiv.textContent = `${num1} ${operator}`;
@@ -133,39 +157,93 @@ function setExpression (e) {
 let equalBtn = document.querySelector('.equal')
 equalBtn.addEventListener('click', operate)
 
+let res = NaN;
 
 //Function to execute the expression
-function operate() {
+function operate(e) {
     
     expressionIsSet = false;
+    operationToggle = true;
 
-    let res = 0;
+    if (operationToggle == false){
+
+        eTarget = '='
+
+    }
 
     switch(operator) {
 
         case '+':
-        res = +num1 + +num2;
+            res = +num1 + +num2;
+            
+            if (eTarget == '=') {
+
+                expressionDiv.textContent = `${num1} ${operator} ${num2} =`
+                num1 = res;
+
+            } else {
+                
+                expressionDiv.textContent = `${res} ${operator}`;
+                num1 = res;
+
+            }
         break;
 
 
         case '-':
-        res = +num1 - +num2;
+            res = +num1 - +num2;
+            
+            if (eTarget == '=') {
+
+                expressionDiv.textContent = `${num1} ${operator} ${num2} =`
+                num1 = res;
+
+            } else {
+                
+                expressionDiv.textContent = `${res} ${operator}`;
+                num1 = res;
+
+            }
         break;
 
 
         case '×':
-        res = +num1 * +num2;
+            res = +num1 * +num2;
+            
+            if (eTarget == '=') {
+
+                expressionDiv.textContent = `${num1} ${operator} ${num2} =`
+                num1 = res;
+
+            } else {
+                
+                expressionDiv.textContent = `${res} ${operator}`;
+                num1 = res;
+
+            }
         break;
 
 
         case '÷':
-        res = +num1 / +num2;  
+            res = +num1 / +num2;
+            
+            if (eTarget == '=') {
+
+                expressionDiv.textContent = `${num1} ${operator} ${num2} =`
+                num1 = res;
+
+            } else {
+                
+                expressionDiv.textContent = `${res} ${operator}`;
+                num1 = res;
+
+            }        
         break;
 
     }
 
     //Update the screen div
-    expressionDiv.textContent = `${num1} ${operator} ${num2} =`
+    //expressionDiv.textContent = `${num1} ${operator}`   
 
     //Verify whether the num is a integer or not
     if (!Number.isInteger(res)){
