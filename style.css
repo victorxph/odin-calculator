@@ -34,15 +34,16 @@ div.screen {
     height: 10em;
     border-radius: 5px;
     background-color: #00ff0034;
+    flex-wrap: wrap;
 
 }
 
 .screenContent {
 
-    display: grid;
-    grid-template-columns: 1, 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    height: 100%;
     font-size: 40px;
     margin: 20px;
 
@@ -51,7 +52,6 @@ div.screen {
 div.currentNum {
 
     text-align: end;
-    padding-bottom: 0.25em;
 
 }
 
