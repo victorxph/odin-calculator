@@ -31,27 +31,30 @@ div.screen {
     
     display: flex;
     width: 100%;
-    height: 10em;
+    min-height: 10em;
     border-radius: 5px;
     background-color: #00ff0034;
     flex-wrap: wrap;
-
+    
 }
 
 .screenContent {
-
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     font-size: 40px;
     margin: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
 
 }
 
 div.currentNum {
 
     text-align: end;
+    flex-wrap: wrap;
 
 }
 
