@@ -126,6 +126,7 @@ function setExpression(e) {
     operator = e.target.textContent;
     console.log(operator)
     eTarget = e.target.textContent;
+    equalPressed = false;
     
     if(isExpressionSet && num1){
         
@@ -149,7 +150,7 @@ function setExpression(e) {
         currentNumDiv.textContent = '0'
         isExpressionSet = true;
         
-    } else if (num1 && isExpressionSet && toggleExpression == false) {
+    } else if (num1 && isExpressionSet && !toggleExpression) {
         
         expressionDiv.textContent = `${num1} ${operator}`
         
