@@ -142,7 +142,7 @@ function setExpression(e) {
         
     }
     
-    if (num1 && num2){
+    if (num1 != null && num2 != null){
         
         operatorTest = expressionDiv.textContent.slice(expressionDiv.textContent.length - 1);
         
@@ -172,7 +172,7 @@ let equalPressed = false;
 
 function operate(e){
 
-    // if(num1 == null && !operator) return 0;
+    if(num1 == null && !operator) return 0;
 
     num2 = currentNumDiv.textContent;
 
@@ -180,7 +180,13 @@ function operate(e){
 
         toggleExpression = false;
         equalPressed = true;
-        operator = expressionDiv.textContent.slice(expressionDiv.textContent.length - 1);
+
+        if(expressionDiv.textContent.slice(expressionDiv.textContent.length - 1) != '=') {
+
+            operator = expressionDiv.textContent.slice(expressionDiv.textContent.length - 1);
+
+        }
+
 
     }
 
