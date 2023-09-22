@@ -133,3 +133,16 @@ a.gitHubLink, a.gitHubLink:visited{
     color: black;
 
 }
+
+.fa-github {
+    color: black;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.fa-github:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 1rem #ffffff8f;
+    border-radius: 15px;
+
+}
