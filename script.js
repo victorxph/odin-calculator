@@ -40,6 +40,12 @@ function multiply(a, b){
 
 function divide(a, b){
 
+    if (a == 0 || b == 0) {
+
+        return "Error, dividing by 0";
+
+    }
+
     return +a / +b;
 
 }
@@ -92,6 +98,8 @@ function clear() {
     expressionDiv.textContent = '';
     num1 = null;
     num2 = null;
+    operator = null;
+    res = null;
 
 }
 
@@ -113,7 +121,7 @@ function deleteNum() {
 
 }
 
-let operator;
+let operator = null;
 
 let operatorTest;
 
@@ -128,7 +136,7 @@ function setExpression(e) {
     eTarget = e.target.textContent;
     equalPressed = false;
     
-    if(isExpressionSet && num1){
+    if(isExpressionSet && num1 != null){
         
         num2 = currentNumDiv.textContent
         
@@ -163,6 +171,8 @@ let res = null;
 let equalPressed = false;
 
 function operate(e){
+
+    // if(num1 == null && !operator) return 0;
 
     num2 = currentNumDiv.textContent;
 
