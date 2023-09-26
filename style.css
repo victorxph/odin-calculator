@@ -19,7 +19,7 @@ div.container {
     transform: scale(0.75);
     gap: 1em;
     padding: 1.5em;
-    max-width: 45%;
+    max-width: 305px;
     min-width: 350px;
     min-height: 32.5%;
     /* min-height: 400px; */
@@ -59,6 +59,8 @@ div.currentNum {
 
     text-align: end;
     flex-wrap: wrap;
+    word-wrap: break-word;
+    word-break: break-all;
     
 }
 
@@ -94,10 +96,7 @@ div.btnContainer {
     grid-template-columns: repeat(4, 1fr);
     border-radius: 5px;
     gap: 1em;
-    /* 
-    flex-wrap: wrap;
     
-    */
 }
 
 button {
